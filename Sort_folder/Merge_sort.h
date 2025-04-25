@@ -1,18 +1,18 @@
 #pragma once
 #include "header.h"
-void Merge(vector<int>& arr, int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+void Merge(vector<long long>& arr, long long left, long long mid, long long right) {
+    long long n1 = mid - left + 1;
+    long long n2 = right - mid;
 
-    vector<int> L(n1), R(n2);
+    vector<long long> L(n1), R(n2);
 
-    for (int i = 0; i < n1; i++)
+    for (long long i = 0; i < n1; i++)
         L[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
+    for (long long j = 0; j < n2; j++)
         R[j] = arr[mid + 1 + j];
 
-    int i = 0, j = 0;
-    int k = left;
+    long long i = 0, j = 0;
+    long long k = left;
 
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
@@ -39,7 +39,7 @@ void Merge(vector<int>& arr, int left, int mid, int right) {
     }
 }
 
-void MergeSort_re(vector<int>& arr, int left, int right) {
+void MergeSort_re(vector<long long>& arr, long long left, long long right) {
     if (left >= right)
         return;
 
@@ -50,9 +50,9 @@ void MergeSort_re(vector<int>& arr, int left, int right) {
     Merge(arr, left, mid, right);
 }
 
-vector<int>MergeSort(vector<int>arr) {
-    vector<int>newarr = arr;
-    int n = newarr.size();
+vector<long long>MergeSort(vector<long long>arr) {
+    vector<long long>newarr = arr;
+    long long n = newarr.size();
 
     MergeSort_re(newarr, 0, n - 1);
     return newarr;
